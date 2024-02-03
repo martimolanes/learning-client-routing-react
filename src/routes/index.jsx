@@ -1,3 +1,4 @@
+// default export of this module.
 export default function Index() {
   return (
     <p id="zero-state">

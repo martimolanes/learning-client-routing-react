@@ -6,6 +6,11 @@ import {
 } from "react-router-dom";
 import { updateContact } from "../contacts";
 
+// The action function is an async function that is called when the route is matched.
+// It receives the request and params objects. It gets the form data from the request,
+// converts it into an object, and then calls updateContact to update the contact with
+// the provided contactId and the new data from the form. After the contact is updated,
+// it redirects the user to the contact's detail page.
 export async function action({ request, params }) {
     const formData = await request.formData();
     const updates = Object.fromEntries(formData);
@@ -13,8 +18,12 @@ export async function action({ request, params }) {
     return redirect(`/contacts/${params.contactId}`);
 }
 
+// The EditContact function component is the default export of this module.
+// It renders a form that allows the user to edit the contact's details.
 export default function EditContact() {
+// It uses the useLoaderData hook to access the data that was loaded by the loader function.
   const { contact } = useLoaderData();
+// It uses the useNavigate hook to get a function that allows it to navigate programmatically.
   const navigate = useNavigate();
 
   return (

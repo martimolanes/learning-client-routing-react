@@ -1,6 +1,9 @@
 import { Form, useLoaderData, useFetcher } from "react-router-dom";
 import { getContact, updateContact } from "../contacts";
 
+// This action function is an async function that is called when the route is matched.
+// It receives the request and params objects, and it updates a contact's 'favorite' status.
+// This function will be invoked after the component is rendered.
 export async function action({ request, params }) {
   let formData = await request.formData();
   return updateContact(params.contactId, {
@@ -8,6 +11,9 @@ export async function action({ request, params }) {
   });
 }
 
+// This loader function is an async function that is called when the route is matched,
+// before the component is rendered. It fetches the contact data that the component needs.
+// If the contact data cannot be fetched, it throws a 404 error.
 export async function loader({ params }) {
     const contact = await getContact(params.contactId);
     if (!contact) {
@@ -19,7 +25,10 @@ export async function loader({ params }) {
     return { contact };
 }
 
+// The Contact component is the default export of this module.
+// It renders the contact's information and provides options to edit or delete the contact.
 export default function Contact() {
+// useLoaderData hook, access the data that was loaded by the loader function.
   const { contact } = useLoaderData();
 
   return (
@@ -81,7 +90,9 @@ export default function Contact() {
   );
 }
 
+// The Favorite function component is used to display and update a contact's 'favorite' status.
 function Favorite({ contact }) {
+    // useFetcher hook to access the fetcher object to submit the form data.
   const fetcher = useFetcher();
   // yes, this is a `let` for later
   let favorite = contact.favorite;
