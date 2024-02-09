@@ -1,7 +1,7 @@
 {
     "scripts": {
         "hola": "echo Hola mundo",
-        "start:frontend": "cd frontend && npm start",
+        "start:frontend": "cd frontend && npm run dev",
         "start:backend": "cd backend && npm start",
         "start": "npm run start:frontend & npm run start:backend"
     }
