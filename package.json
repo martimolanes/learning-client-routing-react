@@ -1,8 +1,10 @@
 {
     "scripts": {
         "hola": "echo Hola mundo",
+        "install:all": "npm install --prefix backend && npm install --prefix frontend",
         "start:frontend": "cd frontend && npm run dev",
         "start:backend": "cd backend && npm start",
-        "start": "npm run start:frontend & npm run start:backend"
+        "start": "npm run start:frontend & npm run start:backend",
+        "db": "cd backend && sudo docker-compose -f stack.yml up -d"
     }
 }
